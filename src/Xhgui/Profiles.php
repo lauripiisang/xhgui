@@ -22,6 +22,9 @@ class Xhgui_Profiles
      */
     public function insert($profile)
     {
+    	// Mongo doesn't take kindly to dots hanging around keys
+	    // see http://php.net/manual/en/class.mongoexception.php
+		$profile = Xhgui_Util::escapeDotKeys($profile);
         return $this->_collection->insert($profile, array('w' => 0));
     }
 }
