@@ -31,7 +31,7 @@ class Xhgui_Util
 	 */
 	public static function escapeDotKeys($array, $replacement = '_dot_') {
 		$dotKeys = array_filter(array_keys($array), function ($key){
-			return strstr('.', $key );
+			return strstr($key, '.');
 		});
 		foreach ($dotKeys as $dotKey){
 			$escapedKey = str_replace('.', $replacement, $dotKey);
